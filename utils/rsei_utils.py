@@ -1,18 +1,17 @@
 import pandas as pd
 import geopandas as gpd
-
-datadir = '/projects/standard/lenkne/oboiko/EJ/data/'
+from utils.config import root_dir
 
 def load_tabular_water_microdata(site='Onsite', universe='core01'):
     # these files are large, takes a minute to open
     return pd.read_csv(
-        datadir + f'raw/RSEI/NHDMicroResults_conc_agg{site}{universe}.zip', compression='zip'
+        root_dir + f'data_input/rsei/NHDMicroResults_conc_agg{site}{universe}.zip', compression='zip'
     )
 
 def load_rsei_flowlines(site='Onsite', year=2022, selection_aoi=None, universe='core01'):
     # read a shapefile
     rsei_flowlines = gpd.read_file(
-            f'zip://{datadir}/raw/RSEI/NHDMicroResults_{site}{universe}_{year}.zip/NHDMicroResults_{site}{universe}_{year}.shp'
+            f'zip://{root_dir}/data_input/rsei/NHDMicroResults_{site}{universe}_{year}.zip/NHDMicroResults_{site}{universe}_{year}.shp'
         )
     # select by area of interest if provided
     if selection_aoi is not None:
@@ -29,15 +28,15 @@ def load_rsei_flowlines(site='Onsite', year=2022, selection_aoi=None, universe='
 
 def load_facility_data():
     # rsei facility-level data
-    releases_filepath = datadir + 'raw/RSEI/RSEIv2312_Public_Release_Data/releases_data_rsei_v2312.csv'
+    releases_filepath = root_dir + 'data_input/rsei/RSEIv2312_Public_Release_Data/releases_data_rsei_v2312.csv'
     releases = pd.read_csv(releases_filepath, low_memory=False)
-    submissions_filepath = datadir + 'raw/RSEI/RSEIv2312_Public_Release_Data/submissions_data_rsei_v2312.csv'
+    submissions_filepath = root_dir + 'data_input/rsei/RSEIv2312_Public_Release_Data/submissions_data_rsei_v2312.csv'
     submissions = pd.read_csv(submissions_filepath, low_memory=False)
-    facilities_filepath = datadir + 'raw/RSEI/RSEIv2312_Public_Release_Data/facility_data_rsei_v2312.csv'
+    facilities_filepath = root_dir + 'data_input/rsei/RSEIv2312_Public_Release_Data/facility_data_rsei_v2312.csv'
     facilities = pd.read_csv(facilities_filepath, low_memory=False)
-    naics_filepath = datadir + "raw/RSEI/RSEIv2312_Public_Release_Data/naics_data_rsei_v2312.csv"
+    naics_filepath = root_dir + "data_input/rsei/RSEIv2312_Public_Release_Data/naics_data_rsei_v2312.csv"
     naics = pd.read_csv(naics_filepath, low_memory=False)
-    chemical_filepath = datadir + "raw/RSEI/RSEIv2312_Public_Release_Data/chemical_data_rsei_v2312.csv"
+    chemical_filepath = root_dir + "data_input/rsei/RSEIv2312_Public_Release_Data/chemical_data_rsei_v2312.csv"
     chemical = pd.read_csv(chemical_filepath, low_memory=False)
     return releases, submissions, facilities, naics, chemical
 

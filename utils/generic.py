@@ -1,5 +1,6 @@
 import pandas as pd
 import geopandas as gpd
+from shapely.geometry import box
 
 def table_to_gdf(data, x, y, projection='epsg:4326'):
     # load data from a csv and convert DataFrame into GeoDataFrame
@@ -16,3 +17,8 @@ def table_to_gdf(data, x, y, projection='epsg:4326'):
         geometry=gpd.points_from_xy(df[x], df[y]),
         crs=projection
     )
+
+def gdf_bounds_to_box(gdf):
+    minx, miny, maxx, maxy = gdf.total_bounds
+    # create a bounding box shape from the total bounds
+    return box(minx, miny, maxx, maxy)
