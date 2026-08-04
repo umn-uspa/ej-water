@@ -1,4 +1,4 @@
-# This script aggregates RSEI flowline data to HUC12 watersheds for specified study periods.
+# This script aggregates RSEI flowline data to HUC12 subwatersheds for specified study periods.
 
 import geopandas as gpd
 from utils.rsei_utils import aggregate_RSEI
