@@ -26,7 +26,6 @@ variables = [
     "share_asian",
     "share_hispanic",
     "share_below_poverty",
-    "share_2_below_poverty",
     "share_2_above_poverty",
 ]
 
@@ -79,7 +78,7 @@ def rasterize_demographics(gdf, var, study_period, epa_array, epa_transform, epa
 
 
 # Data processing starts here
-for study_period in study_periods[:1]:
+for study_period in study_periods:
     print("\nProcessing", study_period)
     print("Load CBGs")
     gdf = gpd.read_file(cbg_filepath.format(study_period))
@@ -101,7 +100,7 @@ for study_period in study_periods[:1]:
     )
     gdf["EPA_total"] = [s["sum"] for s in stats]
     print("Rasterizing demographic/socioeconomic characteristics")
-    for var in variables[:1]:
+    for var in variables:
         rasterize_demographics(
             gdf, var, study_period, epa_array, epa_transform, epa_dst
         )

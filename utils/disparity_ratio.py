@@ -8,7 +8,6 @@ var_names = {
     'share_asian': 'Asian',
     'share_hispanic': 'Hispanic or Latino',
     'share_2_above_poverty': 'Twice Above Poverty',
-    'share_2_below_poverty': 'Twice Below Poverty',
     'share_below_poverty': 'Below Poverty'
 }
 
@@ -20,7 +19,6 @@ references = {
     'Asian': 'Non Hispanic White',
     'Hispanic or Latino': 'Non Hispanic White',
     'Twice Above Poverty': None, # this IS a reference group
-    'Twice Below Poverty': 'Twice Above Poverty',
     'Below Poverty': 'Twice Above Poverty'
 }
 

@@ -20,7 +20,6 @@ variables = [
     "share_asian",
     "share_hispanic",
     "share_below_poverty",
-    "share_2_below_poverty",
     "share_2_above_poverty",
 ]
 
