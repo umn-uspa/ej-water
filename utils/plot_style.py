@@ -24,14 +24,16 @@ def apply_plot_style() -> None:
     mpl.rcParams.update(STYLE_PARAMS)
 
 
-def wrap_labels(ax, width, axis='x', break_long_words=False):
+def wrap_labels(ax, width, axis="x", break_long_words=False):
+    """Wrap x- or y-axis tick labels to a fixed character width."""
     labels = []
-    ticklabels = ax.get_xticklabels() if axis == 'x' else ax.get_yticklabels()
+    ticklabels = ax.get_xticklabels() if axis == "x" else ax.get_yticklabels()
     for label in ticklabels:
         text = label.get_text()
-        labels.append(textwrap.fill(text, width=width,
-                      break_long_words=break_long_words))
-    if axis == 'x':
+        labels.append(
+            textwrap.fill(text, width=width, break_long_words=break_long_words)
+        )
+    if axis == "x":
         ax.set_xticklabels(labels, rotation=0)
     else:
         ax.set_yticklabels(labels, rotation=0)

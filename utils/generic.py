@@ -1,24 +1,30 @@
+"""Generic helper utilities for tabular and geospatial data."""
+
 import pandas as pd
 import geopandas as gpd
 from shapely.geometry import box
 
-def table_to_gdf(data, x, y, projection='epsg:4326'):
+
+def table_to_gdf(data, x, y, projection="epsg:4326"):
+    """Convert a CSV path or DataFrame with x/y columns to a GeoDataFrame."""
     # load data from a csv and convert DataFrame into GeoDataFrame
     # Check if input is a string (filepath) or DataFrame
     if isinstance(data, str):
         df = pd.read_csv(data)
     elif isinstance(data, pd.DataFrame):
-        df = data.copy() # Copying prevents modifying the original df
+        df = data.copy()  # Copying prevents modifying the original df
     else:
-        raise ValueError("The 'data' argument must be a filepath (string) or a pandas DataFrame.")
+        raise ValueError(
+            "The 'data' argument must be a filepath (string) or a pandas DataFrame."
+        )
     # Convert to GeoDataFrame
     return gpd.GeoDataFrame(
-        df,
-        geometry=gpd.points_from_xy(df[x], df[y]),
-        crs=projection
+        df, geometry=gpd.points_from_xy(df[x], df[y]), crs=projection
     )
 
+
 def gdf_bounds_to_box(gdf):
+    """Return a shapely bounding box from GeoDataFrame total bounds."""
     minx, miny, maxx, maxy = gdf.total_bounds
     # create a bounding box shape from the total bounds
     return box(minx, miny, maxx, maxy)
