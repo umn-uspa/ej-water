@@ -4,19 +4,14 @@
 # based on the largest area of intersection.
 
 import geopandas as gpd
-import rasterio
 from utils.config import root_dir
 
 # Configurations
-raster_filepath = (
-    root_dir + "data_input/das_population/Dasymetric_Population_CONUS_2010_V3.tif"
-)
 aoi_counties_filepath = root_dir + "results/aoi_county_boundaries.gpkg"
 wbdhuc12_filepath = root_dir + "data_input/watershed_boundaries/WBD_National_GDB.gdb"
 out_filepath = root_dir + "results/aoi_huc12_boundaries.gpkg"
+target_crs = "EPSG:5070"
 
-# use the CRS of the gridded dataset (EPA population layer)
-target_crs = rasterio.open(raster_filepath).crs
 # initial study area - 126 counties that border Mississippi River, previously assigned to a Qualitative Region
 aoi_counties = gpd.read_file(aoi_counties_filepath)
 # aggregate to qualitative regions
