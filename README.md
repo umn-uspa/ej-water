@@ -6,7 +6,7 @@ This repository supports the analysis of industrial water pollution exposure for
 
 ## Workflow
 
-Scripts are intended to be run sequentially in the order shown below.
+Scripts are intended to be run sequentially.
 
 - [0_download_rsei_water_gm.py](0_download_rsei_water_gm.py): Download RSEI water geographic microdata
 - [1_define_study_area.py](1_define_study_area.py): Select HUC-12 units within the study area

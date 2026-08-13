@@ -66,7 +66,7 @@ def load_facility_data():
     return releases, submissions, facilities, naics, chemical
 
 
-def aggregate_RSEI(years, selection_aoi=None, universe="core01"):
+def aggregate_RSEI(years, selection_aoi=None, universe="core01", study_period_length=5):
     """Aggregate on-site and off-site flowline toxicity across study years."""
     rsei_list = []
     for year in years:
@@ -90,7 +90,7 @@ def aggregate_RSEI(years, selection_aoi=None, universe="core01"):
     rsei_aggregated = rsei_all_years.dissolve(
         ["COMID", "REACHCODE"], aggfunc="sum"
     ).reset_index()
-    rsei_aggregated["TOXCONC"] = rsei_aggregated["TOXCONC"] / 5
+    rsei_aggregated["TOXCONC"] = rsei_aggregated["TOXCONC"] / study_period_length
     return rsei_aggregated
 
 

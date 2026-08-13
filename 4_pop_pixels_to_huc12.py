@@ -1,5 +1,5 @@
 # This script uses gridded population layers (rasters at 30-m resolution)
-# and aggregate pixels to HUC12 units
+# to aggregate pixels to HUC12 units
 
 import geopandas as gpd
 import rasterio
