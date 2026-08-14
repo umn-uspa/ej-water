@@ -4,22 +4,19 @@ channels:
 dependencies:
   - python=3.11
   - pip
-  # Core geospatial libraries
   - geopandas>=0.14
   - rasterio
   - pyogrio
   - fiona
   - shapely
   - pyproj
-  # Array/data science
   - numpy
   - pandas
   - scipy
-  # Zonal statistics
   - rasterstats
-  # Plotting
   - matplotlib
   - mapclassify
-  # Notebooks
   - jupyterlab
   - ipykernel
+  - boto3
+  - botocore

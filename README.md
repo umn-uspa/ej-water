@@ -49,4 +49,5 @@ This workflow was executed on Linux-based HPC systems (University of Minnesota M
 - U.S. Environmental Protection Agency (EPA) 2010 Dasymetric Allocation of Population, Conterminous U.S., 2010 v.3, raster (https://www.epa.gov/enviroatlas/data-download)
 - Schroeder J, Van Riper D, Manson S, Knowles K, Kugler T, Roberts F and Ruggles S 2025 IPUMS National Historical Geographic Information System: Version 20.0. 2022 American Community Survey: 5-Year Data: 2008-2012, 2013-2017, and 2018-2022, Block Groups & Larger Areas (doi: 10.18128/D050.V20.0)
 
-
+---
+This repository incorporates code suggestions generated with the help of AI Assistants (Gemini and Copilot). All AI-suggested code was reviewed, tested, and modified by the author.
